@@ -38,6 +38,7 @@
   // last element.
   _.last = function(array, n) {
     {}dhddd
+    {{}
   };
 
   // Call iterator(value, key, collection) for each element of collection.
