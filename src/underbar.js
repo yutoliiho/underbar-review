@@ -186,7 +186,7 @@
         accumulator = iterator(accumulator, collection[i]);
       }
       return accumulator;
-    };
+    }
     // if accumlator is defined;
     _.each(collection, function(el){
       accumulator = iterator(accumulator, el);
@@ -228,15 +228,19 @@
   // Determine whether any of the elements pass a truth test. If no iterator is
   // provided, provide a default one
   _.some = function(collection, iterator) {
-    // TIP: There's a very clever way to re-use every() here.
-    var verdict = false;
-    _.every(collection, function(el){
-      if(iterator(el)) {
-        verdict = true;
-        return verdict;
-      };
-    });
-    return verdict;
+    iterator = iterator || _.identity;
+    // // TIP: There's a very clever way to re-use every() here.
+    if(collection.length === 0){
+      return false;
+    }
+    var res = true;
+    // if(iterator) {
+    for(var i = 0; i < collection.length;i++) {
+      if(iterator(collection[i])){
+        return true;
+      }
+    }
+    return false;
   };
 
 
